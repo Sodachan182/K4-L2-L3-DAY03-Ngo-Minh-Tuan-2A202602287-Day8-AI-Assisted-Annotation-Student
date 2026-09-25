@@ -1,0 +1,16 @@
+round,frame_id,object,action,rule_or_reason
+1,frame_0099.jpg,một xe có bounding box chưa khớp,edited,đã chỉnh bounding box để ôm sát phần xe nhìn thấy hơn
+1,frame_0099.jpg,nhiều xe bị AI bỏ sót,added,đã thêm bounding box car cho các xe nhìn thấy rõ nhưng không có trong pre-label của AI
+1,frame_0107.jpg,xe có bounding box chưa khớp,edited,đã chỉnh bounding box để ôm sát và khép kín phần xe nhìn thấy hơn
+1,frame_0107.jpg,các xe mờ hoặc bị che một phần,added,đã thêm bounding box car cho các xe vẫn nhận ra được nhưng AI pre-label bỏ sót
+1,frame_0331.jpg,"một bounding box AI gán vào vùng ánh sáng/phản chiếu trên mặt đường, không phải xe",deleted,đã xóa box vì vùng đó không đủ căn cứ để xác định là phương tiện 4 bánh và chỉ giống glare/reflection
+1,frame_0182.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0187.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0227.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0270.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0312.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0326.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0331.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0369.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0380.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."
+1,frame_0392.jpg,nhiều xe bị AI bỏ sót,added,"Đã bổ sung bounding box car cho các xe vẫn nhận diện được nhưng AI pre-label bỏ sót, chủ yếu là xe xa, xe mờ, xe trong vùng tối hoặc bị che một phần."

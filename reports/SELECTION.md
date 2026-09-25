@@ -1,0 +1,15 @@
+# Vì sao chọn lô này?
+
+Trong 50 dòng đứng đầu `outputs/selection_round1.csv`, nếu chỉ có ngân sách rà năm ảnh, tôi ưu tiên các frame sau:
+
+1. `frame_0182.jpg` — hạng 1, điểm 0.9591, thời điểm 72.8 giây. Đây là ứng viên đứng đầu, có uncertainty `U = 0.9182` và 18 dự đoán mơ hồ. Ảnh có 28 box nên chi phí rà soát tương đối dễ kiểm soát so với nhiều ứng viên đông xe hơn.
+2. `frame_0369.jpg` — hạng 2, điểm 0.9324, thời điểm 147.6 giây. Frame có `U = 0.9315` và đại diện cho đoạn muộn của video. Dù 43 box và 16 dự đoán mơ hồ làm chi phí gán nhãn cao, nó vẫn đáng ưu tiên hơn việc lấy thêm nhiều frame rất gần thời điểm này.
+3. `frame_0326.jpg` — hạng 4, điểm 0.9155, thời điểm 130.4 giây. Frame có `U = 0.9310`, 39 box và 15 dự đoán mơ hồ. Nó gần `frame_0331.jpg` về thời gian và gần như ngang điểm (0.9155 so với 0.9154), nhưng có ít box hơn (39 so với 47), nên là lựa chọn tiết kiệm chi phí hơn trong nhóm cảnh gần trùng này.
+4. `frame_0099.jpg` — hạng 8, điểm 0.9063, thời điểm 39.6 giây. `U = 0.9460` là mức rất cao trong danh sách, trong khi 29 box thấp hơn nhiều frame đứng trên. Mốc thời gian sớm và bố cục xe trên contact sheet cũng giúp tăng độ đa dạng so với các ảnh ở khoảng 130–153 giây.
+5. `frame_0227.jpg` — hạng 11, điểm 0.8915, thời điểm 90.8 giây. Frame có `U = 0.9164`, 37 box và 14 dự đoán mơ hồ; mốc thời gian nằm giữa các nhóm đã chọn nên bổ sung một cảnh giao thông khác thay vì tiếp tục lấy các frame liền kề.
+
+Lô 12 ảnh được chọn theo chiến lược uncertainty: ưu tiên những trường hợp mô hình không tự tin vào dự đoán của mình. Trong CSV, các ảnh được đánh dấu `selected=True` đều nằm trong 15 hạng đầu; chẳng hạn `frame_0182.jpg` ở hạng 1 với điểm 0.9591, `frame_0369.jpg` ở hạng 2 với điểm 0.9324 và `frame_0326.jpg` ở hạng 4 với điểm 0.9155. Contact sheet xác nhận đây là các cảnh đường cao tốc ban đêm, có nhiều xe, ánh sáng mạnh–tối xen kẽ và nhiều đối tượng nhỏ ở xa; đó là những điều kiện dễ làm dự đoán trở nên mơ hồ.
+
+Tuy nhiên, uncertainty cao không tự động đồng nghĩa với dữ liệu gán nhãn tốt hơn. Video đường cao tốc có nhiều frame liên tiếp gần như cùng một cảnh: ví dụ `frame_0369.jpg` (147.6 giây, hạng 2, điểm 0.9324), `frame_0372.jpg` (148.8 giây, hạng 6, điểm 0.9101) và `frame_0374.jpg` (149.6 giây, hạng 20, điểm 0.8624) chỉ cách nhau rất ngắn. Tôi không ưu tiên thêm `frame_0380.jpg` dù ảnh này đứng hạng 3 với điểm 0.9170, vì đã chọn `frame_0369.jpg` trong cùng đoạn muộn và contact sheet cho thấy hai ảnh có cảnh quan rất giống nhau. Tương tự, giữa `frame_0326.jpg` và `frame_0331.jpg`, lựa chọn frame có 39 box thay vì 47 box giúp giảm annotation cost mà vẫn giữ mức điểm gần như tương đương.
+
+Phép chọn này chưa chứng minh mô hình có chất lượng tốt hay kém: điểm uncertainty chỉ phản ánh mức thiếu tự tin theo tiêu chí chọn mẫu, không phải độ chính xác nhãn thật. Ở vòng tiếp theo, nên kết hợp uncertainty với đo độ đa dạng cảnh, khoảng cách thời gian hoặc đặc trưng ảnh để khử near-duplicate, đồng thời ước lượng annotation cost từ số box và số dự đoán mơ hồ trước khi chốt batch.
